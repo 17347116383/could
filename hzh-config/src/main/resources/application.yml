@@ -1,0 +1,43 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: hzh-config
+  profiles:
+    # native 与git同级可以使用git生效就是git
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/configs/dev
+
+          #          searchLocations: file:/d:/configs/{profile}
+          #公用配置文件地址
+          #git:
+          # uri: #https://gitee.com/hzh.w/cloud-service-configs.git
+          #username:
+          #password:
+          #default-label: master
+          #force-pull: true
+          #searchPaths: '{profile}'
+  zipkin:
+    base-url: http://127.0.0.1:9411
+    enabled: true
+    sender:
+      type: web
+      #默认percentage: 0.1
+    sleuth:
+      sampler:
+        percentage: 0.2
+  boot:
+    admin:
+      client:
+        #api-path:
+        url: 127.0.0.1:8762
+        #username:
+        #connect-timeout: 5000ms
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8760/eureka/

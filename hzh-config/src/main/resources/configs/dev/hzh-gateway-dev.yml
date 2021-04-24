@@ -1,0 +1,87 @@
+server:
+  port: 9999
+
+
+
+spring:
+  application:
+    name: hzh-gateway
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
+
+  cloud:
+    gateway:
+      # gateway 运行从注册中心发现服务
+      discovery:
+        locator:
+          enabled: true
+          #服务serviceId不分区大小写
+      #      lowerCaseServiceId: true
+      routes:
+        #网关路由的转发 lb:// 表示是从注册中心发现serviceId
+        - id: hzh-feign
+          #uri: http://127.0.0.1:9001
+          #zuul加载路径时zuul会将http://127.0.0.1:9000+hzh-feign+/hzh/**  gateway加载 http://127.0.0.1:9000/hzh/**
+          uri: lb://hzh-feign
+          #order: 9001
+          predicates:
+            - Path=/hzh/**
+          #filters:
+          #请求/name/bar/foo，去除掉前面两个前缀之后，最后转发到目标服务的路径为/foo
+          #  - StripPrefix=2
+        - id: hzh-ribbon
+          #uri: http://127.0.0.1:9010
+          uri: lb://hzh-ribbon
+          predicates:
+            - Path=/hzh/**
+            #filters:  #路由过滤器
+            #- PrefixPath=/mypath
+            #请求/hello，最后转发到目标服务的路径变为/mypath/hello
+            # - StripPrefix=1
+            - name: RequestRateLimiter   #限流
+              args:
+                key-rsolver: '#{@getPathkeyResolver}' #使用spel从容器获取对象
+                # key-rsolver: '#{@userPathkeyResolver}' #使用spel从容器获取对象
+                redis-rate-limiter.replenishRate: 1 #令牌桶每秒填充平均速率
+                redis-raate-limiter.burstCapacity: 10 #令牌桶上线
+              #- RewritePath=/   #重写路由过滤器
+    sleuth:
+      sampler:
+        probability: 1.0
+
+
+
+
+
+
+  zipkin:
+    base-url: http://127.0.0.1:9411
+    enabled: true
+    sender:
+      type: web
+      #默认percentage: 0.1
+  sleuth:
+    sampler:
+      percentage: 0.2
+
+
+  boot:
+    admin:
+      client:
+        #api-path:
+        url: 127.0.0.1:8762
+        #username:
+        #connect-timeout: 5000ms
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8760/eureka/
+
+
+
+
+
+

@@ -1,0 +1,41 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: hzh-feign
+  #  main:
+  #    allow-bean-definition-override : true
+  thymeleaf:
+    cache: false
+    mode: LEGWCYHTML5
+    encoding: utf-8
+    servlet:
+      content-type: text/html
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: hzh-config
+      profile: dev
+      fail-fast: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8760/eureka/
+# feign 自带熔断器 默认关闭
+feign:
+  hystrix:
+    enabled: true
+
+
+
+
+
+
+
+
+
+
+
+

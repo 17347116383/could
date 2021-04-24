@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.common</groupId>
+    <artifactId>hzh-common</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.16.RELEASE</version>
+    </parent>
+    <properties>
+        <xss-version>1.5.5</xss-version>
+        <chaos-monkey>2.1.1</chaos-monkey>
+        <orika-version>1.5.2</orika-version>
+        <modelmapper-version>2.3.3</modelmapper-version>
+        <mybatis-plus.version>3.3.2</mybatis-plus.version>
+    </properties>
+
+<dependencies>
+    <!-- 分页插件 -->
+    <dependency>
+        <groupId>com.github.pagehelper</groupId>
+        <artifactId>pagehelper</artifactId>
+        <version>5.1.10</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.48</version>
+    </dependency>
+
+    <!--指定有效日，日期工具-->
+    <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-all</artifactId>
+        <version>5.1.5</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+        <version>3.9</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 -->
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-pool2</artifactId>
+        <version>2.7.0</version>
+    </dependency>
+    <!--set get方法-->
+    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.12</version>
+    </dependency>
+    <!--文档工具-->
+    <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger2</artifactId>
+        <version>2.9.2</version>
+        <exclusions>
+            <exclusion>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+            </exclusion>
+            <exclusion>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-models</artifactId>
+            </exclusion>
+        </exclusions>
+    </dependency>
+    <dependency>
+        <groupId>io.swagger</groupId>
+        <artifactId>swagger-annotations</artifactId>
+        <version>1.5.24</version>
+    </dependency>
+    <dependency>
+        <groupId>io.swagger</groupId>
+        <artifactId>swagger-models</artifactId>
+        <version>1.5.24</version>
+    </dependency>
+    <dependency>
+        <groupId>com.github.xiaoymin</groupId>
+        <artifactId>knife4j-spring-boot-starter</artifactId>
+        <version>2.0.2</version>
+    </dependency>
+
+    <!--   -->
+    <!-- mybatis-plus -->
+    <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>${mybatis-plus.version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-generator</artifactId>
+        <version>${mybatis-plus.version}</version>
+    </dependency>
+
+    <!-- mybatis的分页插件 -->
+    <dependency>
+        <groupId>com.github.pagehelper</groupId>
+        <artifactId>pagehelper-spring-boot-starter</artifactId>
+        <version>1.2.13</version>
+    </dependency>
+    <!-- 数据库配置 -->
+
+
+    <!-- redis配置 -->
+
+
+    <!-- springboot details实体核心包-->
+
+    <!-- 加入spring security spring security oauth2的处理 -->
+
+
+    <!-- XSS -->
+    <dependency>
+        <groupId>org.owasp.antisamy</groupId>
+        <artifactId>antisamy</artifactId>
+        <version>${xss-version}</version>
+    </dependency>
+
+    <!-- 混沌工程 -->
+    <dependency>
+        <groupId>de.codecentric</groupId>
+        <artifactId>chaos-monkey-spring-boot</artifactId>
+        <version>${chaos-monkey}</version>
+    </dependency>
+
+
+    <!-- orika core工具对实体（Bean）进行深度拷贝 -->
+    <dependency>
+        <groupId>ma.glasnost.orika</groupId>
+        <artifactId>orika-core</artifactId>
+        <version>${orika-version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>commons-io</groupId>
+        <artifactId>commons-io</artifactId>
+        <version>2.6</version>
+    </dependency>
+
+    <!-- time -->
+    <dependency>
+        <groupId>joda-time</groupId>
+        <artifactId>joda-time</artifactId>
+        <version>2.10.6</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.5.2</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-validator</artifactId>
+        <version>5.4.2.Final</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.modelmapper</groupId>
+        <artifactId>modelmapper</artifactId>
+        <version>${modelmapper-version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>28.0-jre</version>
+    </dependency>
+    <dependency>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis</artifactId>
+        <version>3.5.3</version>
+    </dependency>
+
+
+    <dependency>
+        <groupId>commons-collections</groupId>
+        <artifactId>commons-collections</artifactId>
+        <version>3.2.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-collections4</artifactId>
+        <version>4.1</version>
+    </dependency>
+    <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger-common</artifactId>
+        <version>2.9.2</version>
+    </dependency>
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.9.10.4</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-aop</artifactId>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
+    <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-resource-server -->
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-configuration-processor</artifactId>
+        <optional>true</optional>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context</artifactId>
+        <version>5.1.17.RELEASE</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
+<!--    <dependency>
+        <groupId>org.redisson</groupId>
+        <artifactId>redisson</artifactId>
+        <version>3.11.6</version>
+    </dependency>-->
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>1.2.73</version>
+        <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>commons-lang</groupId>
+        <artifactId>commons-lang</artifactId>
+        <version>2.6</version>
+        <scope>compile</scope>
+    </dependency>
+</dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

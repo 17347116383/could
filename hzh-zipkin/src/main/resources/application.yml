@@ -1,0 +1,25 @@
+server:
+  port: 9411
+spring:
+  application:
+    name: hzh-zipkin
+  main:
+    allow-bean-definition-overriding: true
+
+  boot:
+    admin:
+      client:
+        #api-path:
+        url: 127.0.0.1:8762
+        #username:
+        #connect-timeout: 5000ms
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8760/eureka/
+    #
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false

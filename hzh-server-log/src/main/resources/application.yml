@@ -1,0 +1,47 @@
+server:
+  port: 9002
+spring:
+  application:
+    name: hzh-server-log
+  #  main:
+  #    allow-bean-definition-override : true
+  thymeleaf:
+    cache: false
+    mode: LEGWCYHTML5
+    encoding: utf-8
+    servlet:
+      content-type: text/html
+
+  cloud:
+    config:
+      discovery:
+        enabled: true # 通过服务发现的方式去找配置中心
+        service-id: hzh-config # 配置中心的名字，直接配置名称可以在配置中心集群的时候实现负载均衡
+      profile: dev # 对应配置中心文件的${profile}部分
+      fail-fast: true
+  zipkin:
+    base-url: http://127.0.0.1:9411
+    enabled: true
+    sender:
+      type: web
+      #默认percentage: 0.1
+    sleuth:
+      sampler:
+        percentage: 0.2
+
+  boot:
+    admin:
+      client:
+        #api-path:
+        url: 127.0.0.1:8762
+        #username:
+        #connect-timeout: 5000ms
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8760/eureka/
+# feign 自带熔断器 默认关闭
+feign:
+  hystrix:
+    enabled: false
+

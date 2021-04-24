@@ -1,0 +1,96 @@
+server:
+  port: 8080
+
+
+spring:
+  application:
+    name: hzh-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          lowerCaseServiceId: true
+          enabled: true
+          #default-filters:
+          #  - name: Hystrix
+            #    args:
+            #      name: default
+          #      fallbackUri: 'forward:/defaultfallback'
+          #  - name: RequestRateLimiter
+            #    args:
+            #      redis-rate-limiter.replenishRate: 1000  # 令牌桶的容积
+            #      redis-rate-limiter.burstCapacity: 1000  # 流速 每秒
+      #      key-resolver: "#{@ipAddressKeyResolver}" #SPEL表达式去的对应的bean
+      routes:
+        # =====================================
+        - id: hzh-server-auth
+          uri: lb://hzh-server-auth
+          order: 9000
+          predicates:
+            - Path=/hzhServerAuth/**
+          filters:
+            - StripPrefix=1
+        - id: hzh-server-system
+          uri: lb://hzh-server-system
+          order: 9001
+          predicates:
+            - Path=/hzhServerSystem/**
+          filters:
+            - StripPrefix=1
+        - id: hzh-server-log
+          uri: lb://hzh-server-log
+          order: 9002
+          predicates:
+            - Path=/hzhServerLog/**
+          filters:
+            - StripPrefix=1
+
+
+
+  zipkin:
+    base-url: http://127.0.0.1:9411
+    enabled: true
+    sender:
+    type: web
+    #默认percentage: 0.1
+  sleuth:
+    sampler:
+      percentage: 0.2
+
+
+  boot:
+    admin:
+      client:
+        #api-path:
+        url: 127.0.0.1:8762
+        #username:
+        #connect-timeout: 5000ms
+  main:
+    allow-bean-definition-overriding: true
+
+
+
+
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8760/eureka/
+      #http://192.168.3.170:1111/eureka,http://192.168.3.171:1111/eureka,http://192.168.3.173:1111/eureka
+    registry-fetch-interval-seconds: 5
+    instance-info-replication-interval-seconds: 10
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${spring.application.instance_id:${server.port}}
+    #    instance-id: ${spring.application.name}:${docker.ipAddress}:${spring.application.instance_id:${server.port}}
+    lease-renewal-interval-in-seconds: 10
+    #注册实例文档
+    status-page-url: http://${spring.cloud.client.ip-address}:${server.port}/swagger-ui.html # ${server.port}为该服务的端口号
+      #    status-page-url: http://${docker.ipAddress}:${server.port}/swagger-ui.html # ${server.port}为该服务的端口号
+
+    #  health-check-url: /health
+# feign 自带熔断器 默认关闭
+feign:
+  hystrix:
+    enabled: false
