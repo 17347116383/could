@@ -1,7 +1,10 @@
 package com.haung.hzhuserserver.controller;
 
+import com.haung.hzhuserserver.entity.User;
+import com.haung.hzhuserserver.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +26,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserCoutroller {
 
 
+   @Autowired
+   private UserService userService;
 
     @Value("${server.port}")
     public  String  port;
@@ -30,8 +35,9 @@ public class UserCoutroller {
     @ApiOperation(value = "测试index接口", nickname = "测试IndexController的index接口")
     @GetMapping("/index")
     public String index() {
-
-
+        User  us = new User();
+        us.setId(12);
+        int user = userService.insertUser(us);
 
 
         return "测试IndexController的index接口...";

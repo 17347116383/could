@@ -16,7 +16,7 @@
 
     <reports>
 
-        <spring-cloud.version>Greenwich.SR5</spring-cloud.version>
+        <spring-cloud.version>Greenwich.SR6</spring-cloud.version>
     </reports>
 
     <dependencies>

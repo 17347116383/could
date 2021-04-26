@@ -3,10 +3,7 @@ singleServerConfig:
   address: "redis://127.0.0.1:6379"
 
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8760/eureka/
+
 #clusterServersConfig:
 # idleConnectionTimeout: 10000
 # pingTimeout: 1000

@@ -21,8 +21,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @Version: 1.0
  * @Description: TODO(这里用一句话描述这个类的作用)
  */
-
-
 @Configuration
 @EnableSwagger2
 @EnableKnife4j
@@ -33,6 +31,7 @@ public class SwaggerConfiguration {
     @Bean(value = "defaultApi2")
     public Docket defaultApi2() {
         Docket docket=new Docket(DocumentationType.SWAGGER_2)
+                .enable(true)
                 .apiInfo(apiInfo())
                 //分组名称
                 .groupName("2.X版本")
@@ -47,7 +46,7 @@ public class SwaggerConfiguration {
         return new ApiInfoBuilder()
                 .title("文档")
                 .description("测试名称")
-                .termsOfServiceUrl("http://localhost:66666/")
+                .termsOfServiceUrl("http://localhost:9000/")
                 .contact("522610395@qq.com")
                 .version("1.0")
                 .build();

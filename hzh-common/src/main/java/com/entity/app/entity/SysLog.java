@@ -1,8 +1,5 @@
 package com.entity.app.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.*;
@@ -12,17 +9,16 @@ import java.util.Date;
 
 
 /**
-* @author 作者 owen 
-* @version 创建时间：2017年11月12日 上午22:57:51
+* @author 作者
+* @version 创建时间：
 * 类说明 日志实体
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("sys_log")
-@EqualsAndHashCode(callSuper=true)
-public class SysLog extends Model<SysLog>  implements Serializable {
+
+public class SysLog  implements Serializable {
 
 	private static final long serialVersionUID = -5398795297842978376L;
 	@JsonSerialize(using=ToStringSerializer.class)
@@ -32,6 +28,6 @@ public class SysLog extends Model<SysLog>  implements Serializable {
 	private String params;	//	执行方法的参数值
 	private String remark;  //  备注
 	private Boolean flag;	//	是否执行成功
-	@TableField(value="create_time")
+
 	private Date createTime;
 }

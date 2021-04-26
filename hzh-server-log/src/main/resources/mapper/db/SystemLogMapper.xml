@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huang.log.mapper.SystemLogMapper">
+
+
+
+    <resultMap id="BaseResultMap" type="com.huang.log.service.vo.SystemLogReqService">
+
+        <id column="systemLogId" jdbcType="VARCHAR" property="systemLogId" />
+        <result column="serviceName" jdbcType="VARCHAR" property="serviceName" />
+       <result column="serviceId" jdbcType="VARCHAR" property="serviceId" />
+       <result column="serviceRequest" jdbcType="VARCHAR" property="serviceRequest" />
+       <result column="serviceResponse" jdbcType="VARCHAR" property="serviceResponse" />
+        <result column="logType" jdbcType="VARCHAR" property="logType" />
+        <result column="relaId" jdbcType="VARCHAR" property="relaId" />
+        <result column="relaTable" jdbcType="VARCHAR" property="relaTable" />
+        <result column="reqTarget" jdbcType="VARCHAR" property="reqTarget" />
+        <result column="reqMsgMemo" jdbcType="VARCHAR" property="reqMsgMemo" />
+        <result column="ipAddress" jdbcType="VARCHAR" property="ipAddress" />
+        <result column="serviceRole" jdbcType="VARCHAR" property="serviceRole" />
+        <result column="sysName" jdbcType="VARCHAR" property="sysName" />
+        <result column="sysNo" jdbcType="VARCHAR" property="sysNo" />
+        <result column="appCpu" jdbcType="VARCHAR" property="appCpu" />
+        <result column="brand" jdbcType="VARCHAR" property="brand" />
+        <result column="carrier" jdbcType="VARCHAR" property="carrier" />
+        <result column="clientIp" jdbcType="VARCHAR" property="clientIp" />
+        <result column="cpu" jdbcType="VARCHAR" property="cpu" />
+        <result column="deviceId" jdbcType="VARCHAR" property="deviceId" />
+        <result column="deviceModel" jdbcType="VARCHAR" property="deviceModel" />
+        <result column="deviceVersion" jdbcType="VARCHAR" property="deviceVersion" />
+        <result column="displayResolution" jdbcType="VARCHAR" property="displayResolution" />
+        <result column="latitude" jdbcType="VARCHAR" property="latitude" />
+        <result column="loadSpeed" jdbcType="VARCHAR" property="loadSpeed" />
+        <result column="longitude" jdbcType="VARCHAR" property="longitude" />
+        <result column="mac" jdbcType="VARCHAR" property="mac" />
+        <result column="networkLevel" jdbcType="VARCHAR" property="networkLevel" />
+        <result column="networkName" jdbcType="VARCHAR" property="networkName" />
+        <result column="networkType" jdbcType="VARCHAR" property="networkType" />
+        <result column="osVersion" jdbcType="VARCHAR" property="osVersion" />
+        <result column="screenSize" jdbcType="VARCHAR" property="screenSize" />
+        <result column="sn" jdbcType="VARCHAR" property="sn" />
+        <result column="storageSize" jdbcType="VARCHAR" property="storageSize" />
+        <result column="totalCpu" jdbcType="VARCHAR" property="totalCpu" />
+        <result column="totalMemory" jdbcType="VARCHAR" property="totalMemory" />
+        <result column="uploadSpeed" jdbcType="VARCHAR" property="uploadSpeed" />
+        <result column="usedMemory" jdbcType="VARCHAR" property="usedMemory" />
+        <result column="CREATEDATE" jdbcType="TIMESTAMP" property="createdate" />
+        <result column="CREATETIME" jdbcType="VARCHAR" property="createtime" />
+        <result column="CREATEUSER" jdbcType="VARCHAR" property="createuser" />
+        <result column="MODIFYDATE" jdbcType="TIMESTAMP" property="modifydate" />
+        <result column="MODIFYTIME" jdbcType="VARCHAR" property="modifytime" />
+        <result column="MODIFYUSER" jdbcType="VARCHAR" property="modifyuser" />
+
+    </resultMap>
+
+
+    <sql id="Base_Column_List">
+        systemLogId,
+        serviceName,
+        serviceId,
+        serviceRequest,
+        serviceResponse,
+        logType,
+        relaId,
+        relaTable,
+        reqTarget,
+        reqMsgMemo,
+        ipAddress,
+        serviceRole,
+        sysName,
+        sysNo,
+        appCpu,
+        brand,
+        carrier,
+        clientIp,
+        cpu,
+        deviceId,
+        deviceModel,
+        deviceVersion,
+        displayResolution,
+        latitude,
+        loadSpeed,
+        longitude,
+        mac,
+        networkLevel,
+        networkName,
+        networkType,
+        osVersion,
+        screenSize,
+        sn,
+        storageSize,
+        totalCpu,
+        totalMemory,
+        uploadSpeed,
+        usedMemory,
+        CREATEDATE,
+        CREATETIME,
+        CREATEUSER,
+        MODIFYDATE,
+        MODIFYTIME,
+        MODIFYUSER
+  </sql>
+
+ <insert id="insertSystemLog" parameterType="com.huang.log.service.vo.SystemLogReqService">
+
+     insert  into  system_log(
+     systemLogId,
+        serviceName,
+        serviceId,
+        serviceRequest,
+        serviceResponse,
+        logType,
+        relaId,
+        relaTable,
+        reqTarget,
+        reqMsgMemo,
+        ipAddress,
+        serviceRole,
+        sysName,
+        sysNo,
+        appCpu,
+        brand,
+        carrier,
+        clientIp,
+        cpu,
+        deviceId,
+        deviceModel,
+        deviceVersion,
+        displayResolution,
+        latitude,
+        loadSpeed,
+        longitude,
+        mac,
+        networkLevel,
+        networkName,
+        networkType,
+        osVersion,
+        screenSize,
+        sn,
+        storageSize,
+        totalCpu,
+        totalMemory,
+        uploadSpeed,
+        usedMemory,
+        CREATEDATE,
+        CREATETIME,
+        CREATEUSER,
+        MODIFYDATE,
+        MODIFYTIME,
+        MODIFYUSER
+     )values (
+     #{systemLogId},
+        #{serviceName},
+        #{serviceId},
+        #{serviceRequest},
+        #{serviceResponse},
+        #{logType},
+        #{relaId},
+        #{relaTable},
+        #{reqTarget},
+        #{reqMsgMemo},
+        #{ipAddress},
+        #{serviceRole},
+        #{sysName},
+        #{sysNo},
+        #{appCpu},
+        #{brand},
+        #{carrier},
+        #{clientIp},
+        #{cpu},
+        #{deviceId},
+        #{deviceModel},
+        #{deviceVersion},
+        #{displayResolution},
+        #{latitude},
+        #{loadSpeed},
+        #{longitude},
+        #{mac},
+        #{networkLevel},
+        #{networkName},
+        #{networkType},
+        #{osVersion},
+        #{screenSize},
+        #{sn},
+        #{storageSize},
+        #{totalCpu},
+        #{totalMemory},
+        #{uploadSpeed},
+        #{usedMemory},
+        #{CREATEDATE},
+        #{CREATETIME},
+        #{CREATEUSER},
+        #{MODIFYDATE},
+        #{MODIFYTIME},
+        #{MODIFYUSER}
+     )
+     
+ </insert>
+
+     <select id="selectLog" parameterType="com.huang.log.service.vo.SystemLogReqService" resultMap="BaseResultMap">
+     select
+     <include refid="Base_Column_List"/>
+     from
+     system_log
+     <where>
+         <if  test="systemLogId != null   and systemLogId != ''">
+             and systemLogId = #{systemLogId,jdbcType=VARCHAR}
+         </if>
+         <if  test="serviceName != null   and serviceName != ''">
+             and serviceName = #{serviceName,jdbcType=VARCHAR}
+         </if>
+         <if test="serviceId != null   and serviceId != ''">
+             and serviceId = #{serviceId,jdbcType=VARCHAR}
+         </if>
+     </where>
+    </select>
+
+    <select id="selectLogList" resultMap="BaseResultMap" parameterType="SystemLogReqService">
+        select
+        <include refid="Base_Column_List"/>
+        from
+        system_log
+        <where>
+            <if  test="systemLogId != null   and systemLogId != ''">
+                and systemLogId = #{systemLogId,jdbcType=VARCHAR}
+            </if>
+            <if  test="serviceName != null   and serviceName != ''">
+                and serviceName = #{serviceName,jdbcType=VARCHAR}
+            </if>
+            <if test="serviceId != null   and serviceId != ''">
+                and serviceId = #{serviceId,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateLog">
+    update system_log
+    <trim prefix="SET" suffixOverrides=",">
+
+        <if test="serviceName != null">serviceName =  #{serviceName},</if>
+        <if test="serviceId != null">serviceId =#{serviceId},</if>
+        <if test="serviceRequest != null">serviceRequest =#{serviceRequest},</if>
+        <if test="serviceResponse != null">serviceResponse =#{serviceResponse},</if>
+        <if test="logType != null">logType =#{logType},</if>
+        <if test="relaId != null">relaId =#{relaId},</if>
+        <if test="relaTable != null">relaTable =#{relaTable},</if>
+        <if test="reqTarget != null">reqTarget = #{reqTarget},</if>
+        <if test="reqMsgMemo != null">reqMsgMemo =#{reqMsgMemo},</if>
+        <if test="ipAddress != null">ipAddress =#{ipAddress},</if>
+        <if test="serviceRole != null">serviceRole = #{serviceRole},</if>
+        <if test="sysName != null">sysName =#{sysName},</if>
+        <if test="sysNo != null">sysNo =#{sysNo},</if>
+        <if test="appCpu != null">appCpu = #{appCpu},</if>
+        <if test="brand != null">brand =#{brand},</if>
+        <if test="carrier != null">carrier = #{carrier},</if>
+        <if test="clientIp != null">clientIp =#{clientIp},</if>
+        <if test="cpu != null">cpu =#{cpu},</if>
+        <if test="deviceId != null">deviceId =#{deviceId},</if>
+        <if test="deviceModel != null">deviceModel = #{deviceModel},</if>
+        <if test="deviceVersion != null">deviceVersion = #{deviceVersion},</if>
+        <if test="displayResolution != null">displayResolution =#{displayResolution},</if>
+        <if test="latitude != null">latitude = #{latitude},</if>
+        <if test="loadSpeed != null">loadSpeed = #{loadSpeed},</if>
+        <if test="longitude != null">longitude = #{longitude},</if>
+        <if test="mac != null">mac = #{mac},</if>
+        <if test="networkLevel != null">networkLevel =#{networkLevel},</if>
+        <if test="networkName != null">networkName =#{networkName},</if>
+        <if test="networkType != null">networkType = #{networkType},</if>
+        <if test="osVersion != null">osVersion =#{osVersion},</if>
+        <if test="screenSize != null">screenSize =#{screenSize},</if>
+        <if test="sn != null">sn =#{sn},</if>
+        <if test="storageSize != null">storageSize =#{storageSize},</if>
+        <if test="totalCpu != null">totalCpu = #{totalCpu},</if>
+        <if test="totalMemory != null">totalMemory =#{totalMemory},</if>
+        <if test="uploadSpeed != null">uploadSpeed =#{uploadSpeed},</if>
+        <if test="usedMemory != null">usedMemory = #{usedMemory},</if>
+        <if test="CREATEDATE != null">CREATEDATE = #{CREATEDATE},</if>
+        <if test="CREATETIME != null">CREATETIME = #{CREATETIME},</if>
+        <if test="CREATEUSER != null">CREATEUSER = #{CREATEUSER},</if>
+        <if test="MODIFYDATE != null">MODIFYDATE = #{MODIFYDATE},</if>
+        <if test="MODIFYTIME != null">MODIFYTIME = #{MODIFYTIME},</if>
+        <if test="MODIFYUSER != null">MODIFYUSER = #{MODIFYUSER},</if>
+    </trim>
+    where systemLogId = #{systemLogId}
+    </update>
+
+
+</mapper>

@@ -21,7 +21,7 @@ import springfox.documentation.spring.web.SpringfoxWebMvcConfiguration;
  */
 @ConditionalOnClass(SpringfoxWebMvcConfiguration.class)
 @EnableDiscoveryClient
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.*.*.mapper"})
 public class HzhUserServerApplication implements WebMvcConfigurer {
 
     public static void main(String[] args) {
@@ -36,5 +36,5 @@ public class HzhUserServerApplication implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("doc.html").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
-    }
+   }
 }

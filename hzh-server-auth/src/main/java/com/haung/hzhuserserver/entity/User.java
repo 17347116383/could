@@ -3,6 +3,8 @@ package com.haung.hzhuserserver.entity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.io.Serializable;
+
 /**
  * @ProjectName: hzh-cloud-app
  * @Package: com.haung.hzhuserserver.entity
@@ -14,7 +16,8 @@ import io.swagger.annotations.ApiModelProperty;
  * @Description: TODO(这里用一句话描述这个类的作用)
  */
 @ApiModel(value = "用户模型")
-public class User {
+
+public class User implements Serializable {
     //@ApiModelProperty(value="id" ,required= true,example = "123")
     @ApiModelProperty(value = "名称")
     private String productName;

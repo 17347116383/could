@@ -5,14 +5,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import zipkin2.server.internal.EnableZipkinServer;
 /**
- *
- * <p>Title: </p>
- * <p>Description: </p>
- * <p>Copyright: Copyright (c) 2019</p>
- * <p>Company: www.baidudu.com</p>
- * @author
- * @date 2020年
- * @version
+ * @ProjectName: hzh-cloud-app
+ * @Package: com.huang.log.mapper
+ * @ClassName:
+ * @Author: Administrator
+ * @Description: ${description}
+ * @Date: 2021/4/24
+ * @Version: 1.0
+ * @Description: TODO(这里用一句话描述这个类的作用)
  */
 @SpringBootApplication
 @EnableEurekaClient

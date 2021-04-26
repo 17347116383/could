@@ -22,6 +22,10 @@
     </properties>
 
 <dependencies>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
     <!-- 分页插件 -->
     <dependency>
         <groupId>com.github.pagehelper</groupId>
@@ -90,21 +94,6 @@
         <artifactId>knife4j-spring-boot-starter</artifactId>
         <version>2.0.2</version>
     </dependency>
-
-    <!--   -->
-    <!-- mybatis-plus -->
-    <dependency>
-        <groupId>com.baomidou</groupId>
-        <artifactId>mybatis-plus-boot-starter</artifactId>
-        <version>${mybatis-plus.version}</version>
-    </dependency>
-
-    <dependency>
-        <groupId>com.baomidou</groupId>
-        <artifactId>mybatis-plus-generator</artifactId>
-        <version>${mybatis-plus.version}</version>
-    </dependency>
-
     <!-- mybatis的分页插件 -->
     <dependency>
         <groupId>com.github.pagehelper</groupId>
@@ -112,16 +101,6 @@
         <version>1.2.13</version>
     </dependency>
     <!-- 数据库配置 -->
-
-
-    <!-- redis配置 -->
-
-
-    <!-- springboot details实体核心包-->
-
-    <!-- 加入spring security spring security oauth2的处理 -->
-
-
     <!-- XSS -->
     <dependency>
         <groupId>org.owasp.antisamy</groupId>
@@ -136,7 +115,6 @@
         <version>${chaos-monkey}</version>
     </dependency>
 
-
     <!-- orika core工具对实体（Bean）进行深度拷贝 -->
     <dependency>
         <groupId>ma.glasnost.orika</groupId>
@@ -149,14 +127,12 @@
         <artifactId>commons-io</artifactId>
         <version>2.6</version>
     </dependency>
-
     <!-- time -->
     <dependency>
         <groupId>joda-time</groupId>
         <artifactId>joda-time</artifactId>
         <version>2.10.6</version>
     </dependency>
-
     <dependency>
         <groupId>org.apache.httpcomponents</groupId>
         <artifactId>httpclient</artifactId>
@@ -178,15 +154,8 @@
     <dependency>
         <groupId>com.google.guava</groupId>
         <artifactId>guava</artifactId>
-        <version>28.0-jre</version>
+        <version>23.0</version>
     </dependency>
-    <dependency>
-        <groupId>org.mybatis</groupId>
-        <artifactId>mybatis</artifactId>
-        <version>3.5.3</version>
-    </dependency>
-
-
     <dependency>
         <groupId>commons-collections</groupId>
         <artifactId>commons-collections</artifactId>
@@ -207,40 +176,26 @@
         <artifactId>jackson-databind</artifactId>
         <version>2.9.10.4</version>
     </dependency>
-
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-aop</artifactId>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
-    <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-oauth2-resource-server -->
 
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-configuration-processor</artifactId>
         <optional>true</optional>
     </dependency>
-    <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-context</artifactId>
-        <version>5.1.17.RELEASE</version>
-    </dependency>
+
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-data-redis</artifactId>
     </dependency>
-<!--    <dependency>
-        <groupId>org.redisson</groupId>
-        <artifactId>redisson</artifactId>
-        <version>3.11.6</version>
-    </dependency>-->
     <dependency>
         <groupId>com.alibaba</groupId>
         <artifactId>fastjson</artifactId>
         <version>1.2.73</version>
-        <scope>compile</scope>
     </dependency>
-
     <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>javax.servlet-api</artifactId>
@@ -249,7 +204,11 @@
         <groupId>commons-lang</groupId>
         <artifactId>commons-lang</artifactId>
         <version>2.6</version>
-        <scope>compile</scope>
+    </dependency>
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid</artifactId>
+        <version>1.1.14</version>
     </dependency>
 </dependencies>
     <build>
