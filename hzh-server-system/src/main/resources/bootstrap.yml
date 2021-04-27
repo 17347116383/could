@@ -1,17 +1,60 @@
+
 server:
-  port: 9001
+  port: 9102
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8760/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    health-check-url: /health
+    status-page-url: /info
+# feign 自带熔断器 默认关闭
+feign:
+  hystrix:
+    enabled: false
+# mybatis
+mybatis:
+  type-aliases-package: com.huang.auth.entity # 实体类包的路径
+  configuration:
+    map-underscore-to-camel-case: false # 将下划线转为驼峰命名
+    default-fetch-size: 100
+    default-statement-timeout: 3000
+  mapper-locations: classpath:mapper/**/*.xml # mapper xml配置文件文件路径
+# 打印sql
+logging:
+  level:
+    com.zsd.demo.dao : debug
+# 数据库
 spring:
   application:
     name: hzh-server-system
-  #  main:
-  #    allow-bean-definition-override : true
-  thymeleaf:
-    cache: false
-    mode: LEGWCYHTML5
-    encoding: utf-8
-    servlet:
-      content-type: text/html
-
+    #  main:
+    #    allow-bean-definition-override : true
+  datasource:
+    url: jdbc:mysql://localhost:3306/systemapp?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    # druid
+    druid:
+      initialSize: 1
+      filters: stat
+      maxActive: 2
+      maxWait: 60000
+      minIdle: 1
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 'x'
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 20
   cloud:
     config:
       discovery:
@@ -36,16 +79,3 @@ spring:
         url: 127.0.0.1:8762
         #username:
         #connect-timeout: 5000ms
-eureka:
-  client:
-    serviceUrl:
-      defaultZone:  http://127.0.0.1.99:8760/eureka/
-  instance:
-    prefer-ip-address: true
-    instance-id: ${spring.cloud.client.ip-address}:${server.port}
-    health-check-url: /health
-    status-page-url: /info
-# feign 自带熔断器 默认关闭
-feign:
-  hystrix:
-    enabled: false

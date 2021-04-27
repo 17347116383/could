@@ -5,12 +5,35 @@ spring:
     name: hzh-server-log
   #  main:
   #    allow-bean-definition-override : true
-  thymeleaf:
-    cache: false
-    mode: LEGWCYHTML5
-    encoding: utf-8
-    servlet:
-      content-type: text/html
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/systemapp?characterEncoding=utf8&useUnicode=true&useSSL=false&serverTimezone=Asia/Shanghai&autoReconnect=true&failOverReadOnly=false
+    username: root
+    password: root
+    druid:
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000;config.decrypt=true;config.decrypt.key=${jxlife.publicKey}
+      filters: stat,wall,slf4j,config
+      initialSize: 1
+      maxActive: 80
+      maxPoolPreparedStatementPerConnectionSize: 20
+      maxWait: 10000
+      minEvictableIdleTimeMillis: 300000
+      minIdle: 3
+      poolPreparedStatements: true
+      testOnBorrow: true
+      testOnReturn: false
+      testWhileIdle: true
+      timeBetweenEvictionRunsMillis: 600000
+      useGlobalDataSourceStat: true
+      validationQuery: select 1
+    #thymeleaf:
+    #cache: false
+    #mode: LEGWCYHTML5
+    #encoding: utf-8
+      #servlet:
+      #content-type: text/html
+
 
   cloud:
     config:
@@ -40,8 +63,21 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8760/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    health-check-url: /health
+    status-page-url: /info
 # feign 自带熔断器 默认关闭
 feign:
   hystrix:
     enabled: false
 
+mybatis:
+  typeAliasesPackage: com.huang.log.entity
+  mapperLocations: classpath:mapper/**/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+logging:
+  level:
+    com.huang.log.mapper: info

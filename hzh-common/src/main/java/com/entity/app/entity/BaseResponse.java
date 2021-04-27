@@ -1,5 +1,6 @@
 package com.entity.app.entity;
 
+import com.entity.app.utils.ResponseCodeEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -65,5 +66,12 @@ public class BaseResponse <T>{
         this.message = message;
         this.bizId = bizId;
         this.transId = transId;
+    }
+
+    public  static BaseResponse getBaseResponse(){
+        BaseResponse baseResponse =new BaseResponse();
+        baseResponse.setCode(ResponseCodeEnum.SUCCESS.getCode());
+        baseResponse.setMessage(ResponseCodeEnum.SUCCESS.getMessage());
+        return  baseResponse;
     }
 }

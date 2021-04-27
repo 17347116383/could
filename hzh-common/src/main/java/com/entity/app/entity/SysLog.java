@@ -17,7 +17,6 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class SysLog  implements Serializable {
 
 	private static final long serialVersionUID = -5398795297842978376L;

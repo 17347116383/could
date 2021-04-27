@@ -53,7 +53,7 @@ public class RepeatedRequestControlAspect {
         String threadName = Thread.currentThread().getName();
         Object obj = null;
 
-        System.err.println(threadName + " -> 重复请求控制执行了");
+
         try {
             // 执行被增强方法，并获取到返回值
             // 类似于 过滤器的chain.doFilter(req,resp)方法

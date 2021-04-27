@@ -2,6 +2,7 @@ package com.entity.app.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -16,6 +17,7 @@ import javax.validation.constraints.NotNull;
  * @Version: 1.0
  * @Description: TODO()
  */
+@Data
 public class BaseRequest<T> {
 
     @ApiModelProperty(value = "请求头信息", position = 0)

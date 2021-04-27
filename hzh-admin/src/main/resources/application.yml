@@ -18,7 +18,11 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8760/eureka/
-
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    health-check-url: /health
+    status-page-url: /info
 
 #监控配置，开启监控中心 springboot2.0 必要操作 * 表示监控所有信息
 management:

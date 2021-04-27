@@ -75,9 +75,6 @@ public class AuthTokenAspect {
      */
     @Before(value = "excudeAdvice()")
     public void beforeAdvice(JoinPoint joinPoint) {
-        Object[] paramArray = joinPoint.getArgs();
-        String threadName = Thread.currentThread().getName();
-        System.out.println(threadName + " -> beforeAdvice获取到了被增强方法的参数了，为:" + paramArray);
     }
 
     /**
@@ -87,8 +84,7 @@ public class AuthTokenAspect {
      */
     @After("excudeAdvice()")
     public void afterAdvice() {
-        String threadName = Thread.currentThread().getName();
-        System.out.println(threadName + " -> 后置增强afterAdvice执行了");
+
     }
 
     /**
@@ -101,8 +97,7 @@ public class AuthTokenAspect {
      */
     @AfterReturning(value = "excudeAdvice()", returning = "map")
     public void afterReturningAdvice(Map<String, Object> map) {
-        String threadName = Thread.currentThread().getName();
-        System.out.println(threadName + " -> afterReturningAdvice获得了返回结果 map -> " + map);
+
     }
 
 
@@ -114,7 +109,7 @@ public class AuthTokenAspect {
      */
     @AfterThrowing(value = "excudeAdvice()", throwing ="ex")
     public void afterThrowingAdvice(Exception ex) {
-        System.out.println("AfterThrowing捕获到了 --->" + ex);
+
     }
 
 
@@ -128,7 +123,7 @@ public class AuthTokenAspect {
         String threadName = Thread.currentThread().getName();
         Object obj = null;
 
-        System.err.println(threadName + " -> 环绕增强aroundAdvice --> before proceed()执行了");
+
         try {
             // 执行被增强方法，并获取到返回值
             // 类似于 过滤器的chain.doFilter(req,resp)方法
@@ -136,7 +131,7 @@ public class AuthTokenAspect {
         } catch (Throwable e) {
             e.printStackTrace();
         }
-        System.err.println(threadName + " -> 环绕增强aroundAdvice --> after proceed()执行了");
+
         return obj;
     }
 

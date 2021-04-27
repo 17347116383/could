@@ -1,7 +1,9 @@
 package com.haung.hzhuserserver.controller;
 
 
+import com.entity.app.entity.BaseRequest;
 import com.haung.hzhuserserver.entity.User;
+import com.haung.hzhuserserver.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -20,10 +22,13 @@ import org.springframework.web.bind.annotation.*;
  */
 @Api(value = "帐号变更Api", tags = {"帐号变更Api"})
 @RestController
+@RequestMapping(value = "/auth" ,produces="application/json;charset=utf-8")
 public class AccountChangeController  {
 
   Logger log = LoggerFactory.getLogger(AccountChangeController.class);
 
+   @Autowired
+   private UserService userService;
 
   @RequestMapping(value = "/initAccountChange", method = RequestMethod.POST)
   @ApiOperation(value = "帐号变更初始化", notes = "帐号变更初始化")
@@ -35,13 +40,16 @@ public class AccountChangeController  {
           @ApiImplicitParam(paramType = "header", name = "requestId", value = "请求ID", required = true, defaultValue = "", dataType = "String")
   })
   //@MssAnnotation(bizLockFlag = false, tamperVerf = false, funVerf = false, dataVerf = false, appVerVerf = false)
-  public User initAccountChange(@RequestBody User request,
+  public User initAccountChange(@RequestBody BaseRequest<User> request,
                                               @RequestHeader(value="token", defaultValue = "")String token,
                                               @RequestHeader(value="authToken", defaultValue = "")String authToken,
                                               @RequestHeader(value="sign", defaultValue = "")String sign) {
 
+    User user=  new User();
 
-    return new User();
+    user.setId(1);
+    int insertUser = userService.insertUser(user);
+    return user;
   }
 
 

@@ -10,10 +10,7 @@ import org.springframework.http.CacheControl;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +27,7 @@ import java.util.TimeZone;
  * @Description: TODO(这里用一句话描述这个类的作用)
  */
 @Configuration
-public class WebConfig implements WebMvcConfigurer {
+public class WebConfig extends WebMvcConfigurationSupport {
 
  // @Value("${spring.jackson.time-zone}")
  // private  String jacksonTimeZone;
@@ -44,16 +41,14 @@ public class WebConfig implements WebMvcConfigurer {
         .allowedMethods("GET", "POST", "DELETE", "PUT", "PATCH");
   }
 
- /* @Override
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    registry.addResourceHandler("/**")
-        .addResourceLocations("/")
-            .setCacheControl(CacheControl.noCache());
-
-
-
+    registry.addResourceHandler("/**"). addResourceLocations("/");
+    registry.addResourceHandler("service-worker.js").addResourceLocations("classpath:/META-INF/resources/");
+    registry.addResourceHandler("index.html").addResourceLocations("classpath:/META-INF/resources/");
+    registry.addResourceHandler("doc.html").addResourceLocations("classpath:/META-INF/resources/");
+    registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/").
+            setCacheControl(CacheControl.noCache());
   }
-*/
 /*  @Override
   public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
     SimpleModule simpleModule = new SimpleModule();

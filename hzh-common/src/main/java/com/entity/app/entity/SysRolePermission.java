@@ -13,8 +13,6 @@ import java.io.Serializable;
 * 类说明 	角色权限实体
 */
 @Data
-
-
 public class SysRolePermission implements Serializable{
 
 	 

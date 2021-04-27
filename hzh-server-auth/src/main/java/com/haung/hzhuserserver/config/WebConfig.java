@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.CacheControl;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -18,7 +19,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  * @Description: TODO(这里用一句话描述这个类的作用)
  */
 @Configuration
-public class WebConfig implements WebMvcConfigurer {
+public class WebConfig  extends WebMvcConfigurationSupport {
 
  // @Value("${spring.jackson.time-zone}")
  // private  String jacksonTimeZone;
@@ -32,13 +33,14 @@ public class WebConfig implements WebMvcConfigurer {
         .allowedMethods("GET", "POST", "DELETE", "PUT", "PATCH");
   }
 
-/*  @Override
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    registry.addResourceHandler("/**")
-        .addResourceLocations("/")
-
-        .setCacheControl(CacheControl.noCache());
-  }*/
+    registry.addResourceHandler("/**"). addResourceLocations("/");
+    registry.addResourceHandler("service-worker.js").addResourceLocations("classpath:/META-INF/resources/");
+    registry.addResourceHandler("index.html").addResourceLocations("classpath:/META-INF/resources/");
+    registry.addResourceHandler("doc.html").addResourceLocations("classpath:/META-INF/resources/");
+    registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/").
+            setCacheControl(CacheControl.noCache());
+  }
 
 /*  @Override
   public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {

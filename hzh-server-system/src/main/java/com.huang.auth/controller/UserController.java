@@ -1,6 +1,9 @@
 package com.huang.auth.controller;
 
-import com.huang.auth.entity.BaseRequest;
+import com.entity.app.entity.BaseRequest;
+import com.entity.app.entity.BaseResponse;
+import com.huang.auth.entity.QueryPolInfoRequest;
+import com.huang.auth.entity.QueryPolInfoResponse;
 import com.huang.auth.entity.User;
 import com.huang.auth.service.UserService;
 import io.swagger.annotations.Api;
@@ -21,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
  * @Description: TODO(这里用一句话描述这个类的作用)
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping(value = "/user" ,produces="application/json;charset=utf-8")
 @Api(value = "IndexController测试接口")
 public class UserController {
 
@@ -29,6 +32,7 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/userinfo")
+    @ApiOperation(value = " 查询", notes = " 查询")
     public String userinfo() {
         User user = userService.getUserById(1);
         return user.getId()+" "+ user.getUserName();
@@ -36,40 +40,28 @@ public class UserController {
 
 
 
-
-
-    @RequestMapping(value = "/queryPolList", method = RequestMethod.POST)
-    @ApiOperation(value = "查询", notes = "查询")
+    @RequestMapping(value = "/queryPolInfo", method = RequestMethod.POST)
+    @ApiOperation(value = " 信息查询", notes = " 信息查询")
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "body", name = "request", value = "请求数据", required = true, defaultValue = "", dataType = "BaseRequest«User»")//,
-           // @ApiImplicitParam(paramType = "header", name = "token", value = "请求会话token", required = true, defaultValue = "", dataType = "String")
-    })
-    public String userinfo(@RequestBody BaseRequest<User> user) {
-
-        User userS = userService.getUserById(1);
-        return userS.getId()+" "+ userS.getUserName();
-    }
-
-
-
-    @RequestMapping(value = "/initAccountChange", method = RequestMethod.POST)
-    @ApiOperation(value = "帐号变更初始化", notes = "帐号变更初始化")
-    @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "body", name = "request", value = "请求数据", required = true, defaultValue = "", dataType = "BaseRequest«User»"),
+            @ApiImplicitParam(paramType = "body", name = "request", value = "请求数据", required = true, defaultValue = "", dataType = "BaseRequest«QueryPolInfoRequest»"),
             @ApiImplicitParam(paramType = "header", name = "token", value = "请求会话token", required = true, defaultValue = "", dataType = "String"),
             @ApiImplicitParam(paramType = "header", name = "authToken", value = "请求authToken", required = false, defaultValue = "", dataType = "String"),
             @ApiImplicitParam(paramType = "header", name = "sign", value = "签名串", required = false, defaultValue = "", dataType = "String"),
-            @ApiImplicitParam(paramType = "header", name = "requestId", value = "请求ID", required = true, defaultValue = "", dataType = "String")
+            @ApiImplicitParam(paramType = "header", name = "requestId", value = "交易Id", required = true, defaultValue = "", dataType = "String")
     })
 
-    public User initAccountChange(@RequestBody BaseRequest<User> request,
-                                  @RequestHeader(value="token", defaultValue = "")String token,
-                                  @RequestHeader(value="authToken", defaultValue = "")String authToken,
-                                  @RequestHeader(value="sign", defaultValue = "")String sign) {
+    public BaseResponse<QueryPolInfoResponse> queryPolInfo(@RequestBody BaseRequest<QueryPolInfoRequest> request,
+                                                           @RequestHeader(value = "token", defaultValue = "") String token,
+                                                           @RequestHeader(value = "authToken", defaultValue = "") String authToken,
+                                                           @RequestHeader(value = "sign", defaultValue = "") String sign,
+                                                           @RequestHeader(value = "requestId", defaultValue = "") String requestId) {
 
-
-        return new User();
+        BaseResponse<QueryPolInfoResponse> asdas = BaseResponse.getBaseResponse();
+        User user = userService.getUserById(1);
+        QueryPolInfoResponse  qw=new QueryPolInfoResponse();
+        qw.setAppntName(user.toString());
+        asdas.setResponse(qw);
+        return asdas;
     }
-
 }
 

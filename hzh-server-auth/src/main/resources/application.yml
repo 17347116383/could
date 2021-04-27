@@ -2,7 +2,7 @@ server:
   port: 9000
 spring:
   application:
-    name: hzh-server-user
+    name: hzh-server-auth
 #  main:
 #    allow-bean-definition-override : true
   datasource:
@@ -73,7 +73,7 @@ eureka:
     status-page-url: /info
 
 mybatis:
-  typeAliasesPackage: com.huang.server.service.vo
+  typeAliasesPackage: com.huang.server.entity
   mapperLocations: classpath:mapper/**/*.xml
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

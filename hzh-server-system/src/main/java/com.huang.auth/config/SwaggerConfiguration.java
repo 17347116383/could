@@ -27,29 +27,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 @EnableKnife4j
-@Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerConfiguration {
 
-/*
- scanPackage: 'cn.com.jxlife.mss.lcsprsv.web'
-    title: 服务API
-    description: 应用服务的API文档
-    termsOfServiceUrl: www.jxlife.com.cn
-    version: 1.0
-    isEnable: true
 
-    @Value("${jxlife.swagger.scanPackage}")
-    private String scanPackage;
-    @Value("${jxlife.swagger.title}")
-    private String swaggerTitle;
-    @Value("${jxlife.swagger.description}")
-    private String swaggerDescription;
-    @Value("${jxlife.swagger.termsOfServiceUrl}")
-    private String termsOfServiceUrl;
-    @Value("${jxlife.swagger.version}")
-    private String version;
-    @Value("${jxlife.swagger.isEnable}")
-    private boolean isEnable;*/
 
     @Bean(value = "defaultApi2")
     public Docket defaultApi2() {

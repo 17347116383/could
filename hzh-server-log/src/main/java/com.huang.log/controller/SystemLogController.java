@@ -30,7 +30,7 @@ import javax.annotation.Resource;
  * @Description: TODO(这里用一句话描述这个类的作用)
  */
 @RestController
-@RequestMapping(value = "/system")
+@RequestMapping(value = "/system"  ,produces="application/json;charset=utf-8")
 @Api(description = "日志平台Api")
 public class SystemLogController {
 
@@ -54,7 +54,6 @@ public class SystemLogController {
            // @ApiImplicitParam(paramType = "header", name = "sign", value = "签名串", required = false, defaultValue = "", dataType = "String"),
            // @ApiImplicitParam(paramType = "header", name = "requestId", value = "交易Id", required = true, defaultValue = "", dataType = "String")
     })
-    @ResponseBody
     public BaseResponse<SytemLogResponse> increase(@RequestBody BaseRequest<SystemLogRequest> obj) {
 
         BaseResponse<SytemLogResponse> sytemLogResponseBaseResponse = systemLogService.insertSystemLog(obj);
@@ -73,7 +72,6 @@ public class SystemLogController {
             @ApiImplicitParam(paramType = "body", name = "request", value = "请求数据", required = true, defaultValue = "", dataType = "BaseRequest«SystemLogRequest»"),
             @ApiImplicitParam(paramType = "header", name = "token", value = "请求会话token", required = true, defaultValue = "", dataType = "String")
     })
-    @ResponseBody
     public BaseResponse<SystemLogRequest> selectLog(@RequestBody BaseRequest<SystemLogRequest> obj) {
 
         BaseResponse<SystemLogRequest> sytemLogResponseBaseResponse = systemLogService.selectLog(obj);
@@ -91,7 +89,6 @@ public class SystemLogController {
             @ApiImplicitParam(paramType = "body", name = "request", value = "请求数据", required = true, defaultValue = "", dataType = "BaseRequest«SystemLogRequest»"),
             @ApiImplicitParam(paramType = "header", name = "token", value = "请求会话token", required = true, defaultValue = "", dataType = "String")
     })
-    @ResponseBody
     public BaseResponse<SytemLogResponse> updateLog(@RequestBody BaseRequest<SystemLogRequest> obj) {
         BaseResponse<SytemLogResponse> sytemLogResponseBaseResponse = systemLogService.updateLog(obj);
         return sytemLogResponseBaseResponse;
@@ -109,7 +106,7 @@ public class SystemLogController {
             @ApiImplicitParam(paramType = "body", name = "request", value = "请求数据", required = true, defaultValue = "", dataType = "BaseRequest«SystemLogRequest»"),
             @ApiImplicitParam(paramType = "header", name = "token", value = "请求会话token", required = true, defaultValue = "", dataType = "String")
     })
-    @ResponseBody
+
     public BaseResponse<PageInfo> selectLogList(@RequestBody BaseRequest<SystemLogRequest> obj) {
         BaseResponse<PageInfo> sytemLogResponseBaseResponse = systemLogService.selectLogList(obj);
         return sytemLogResponseBaseResponse;

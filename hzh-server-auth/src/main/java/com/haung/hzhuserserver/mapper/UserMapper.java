@@ -2,6 +2,7 @@ package com.haung.hzhuserserver.mapper;
 
 import com.haung.hzhuserserver.entity.User;
 import org.mapstruct.Mapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * @ProjectName: hzh-cloud-app
@@ -14,6 +15,7 @@ import org.mapstruct.Mapper;
  * @Description: TODO(这里用一句话描述这个类的作用)
  */
 @Mapper
+@Repository
 public interface UserMapper {
 
 

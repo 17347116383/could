@@ -57,7 +57,7 @@ public class RequestLogsAspect {
         String threadName = Thread.currentThread().getName();
         Object obj = null;
 
-        System.err.println(threadName + " -> 请求日志切面执行了");
+
         try {
             // 执行被增强方法，并获取到返回值
             // 类似于 过滤器的chain.doFilter(req,resp)方法

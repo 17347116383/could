@@ -13,8 +13,7 @@ import springfox.documentation.spring.web.SpringfoxWebMvcConfiguration;
 @EnableDiscoveryClient  //EnableEurekaClient只能使用Eureka做注册中心  EnableDiscoveryClient可以使用其他做注册中心
 @EnableFeignClients
 @SpringBootApplication
-@ConditionalOnClass(SpringfoxWebMvcConfiguration.class)
-public class HzhLogApplication implements WebMvcConfigurer {
+public class HzhLogApplication  {
 
 
     public static void main(String[] args) {
@@ -23,9 +22,5 @@ public class HzhLogApplication implements WebMvcConfigurer {
 
 
 
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("doc.html").addResourceLocations("classpath:/META-INF/resources/");
-        registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
 
-    }
 }

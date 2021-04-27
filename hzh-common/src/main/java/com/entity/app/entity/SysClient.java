@@ -50,16 +50,5 @@ public class SysClient implements Serializable{
    private List<Long> permissionIds;
 
    private Set<Long> serviceIds;
-/*
-   public DefaultClientDetails map(){
-	   DefaultClientDetails defaultClientDetails = new DefaultClientDetails(this.clientId, this.resourceIds , this.scope,this.authorizedGrantTypes,this.authorities,this.webServerRedirectUri) ;
-	   
-	   defaultClientDetails.setAccessTokenValiditySeconds(this.accessTokenValidity);
-	   defaultClientDetails.setRefreshTokenValiditySeconds(this.refreshTokenValidity);
-	   defaultClientDetails.setAutoApproveScopes(StringUtils.commaDelimitedListToSet(this.scope));
-	   defaultClientDetails.setIfLimit(this.ifLimit);
-	   defaultClientDetails.setLimitCount(this.limitCount);
-	   
-	   return defaultClientDetails;
-   }*/
+
 }

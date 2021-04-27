@@ -53,7 +53,7 @@ public class SecurityAspect {
     public Object aroundAdvice(ProceedingJoinPoint thisJoinPoint) throws Throwable {
         String threadName = Thread.currentThread().getName();
         Object obj = null;
-        System.err.println(threadName + " -> 用户token校验)执行了");
+
         try {
             // 执行被增强方法，并获取到返回值
             // 类似于 过滤器的chain.doFilter(req,resp)方法
@@ -61,7 +61,7 @@ public class SecurityAspect {
         } catch (Throwable e) {
             e.printStackTrace();
         }
-        System.err.println(threadName + " ->用户token校验执行了");
+
         return obj;
     }
 
